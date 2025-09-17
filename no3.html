@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nooo 😆</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .btn a:last-child {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Now you can’t say No! 😝</h1>
+    <p>Try catching the button if you can… 😂</p>
+    <div class="btn">
+      <a href="yes.html">Yes 💕</a>
+      <a id="noBtn" href="#">No 😅</a>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    function moveButton() {
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // For mobile: teleport randomly
+        noBtn.style.top = Math.random() * 80 + "vh";
+        noBtn.style.left = Math.random() * 80 + "vw";
+      } else {
+        // For desktop: dodge the mouse
+        document.addEventListener("mousemove", e => {
+          const rect = noBtn.getBoundingClientRect();
+          const dist = Math.hypot(
+            e.clientX - (rect.left + rect.width / 2),
+            e.clientY - (rect.top + rect.height / 2)
+          );
+          if (dist < 80) {
+            noBtn.style.top = Math.random() * 80 + "vh";
+            noBtn.style.left = Math.random() * 80 + "vw";
+          }
+        });
+      }
+    }
+    moveButton();
+  </script>
+</body>
+</html>
