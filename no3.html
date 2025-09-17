@@ -6,8 +6,12 @@
   <title>Nooo 😆</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .btn a:last-child {
+    #noBtn {
       position: absolute;
+      transition: transform 0.25s ease;
+    }
+    #noBtn.bounce {
+      transform: scale(1.3) rotate(10deg);
     }
   </style>
 </head>
@@ -23,28 +27,36 @@
 
   <script>
     const noBtn = document.getElementById("noBtn");
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    function moveButton() {
-      if (/Mobi|Android/i.test(navigator.userAgent)) {
-        // For mobile: teleport randomly
-        noBtn.style.top = Math.random() * 80 + "vh";
-        noBtn.style.left = Math.random() * 80 + "vw";
-      } else {
-        // For desktop: dodge the mouse
-        document.addEventListener("mousemove", e => {
-          const rect = noBtn.getBoundingClientRect();
-          const dist = Math.hypot(
-            e.clientX - (rect.left + rect.width / 2),
-            e.clientY - (rect.top + rect.height / 2)
-          );
-          if (dist < 80) {
-            noBtn.style.top = Math.random() * 80 + "vh";
-            noBtn.style.left = Math.random() * 80 + "vw";
-          }
-        });
-      }
+    if (isMobile) {
+      // Mobile: teleport on touch
+      noBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        moveRandom();
+      });
+    } else {
+      // Desktop: dodge mouse
+      document.addEventListener("mousemove", (e) => {
+        const rect = noBtn.getBoundingClientRect();
+        const dist = Math.hypot(
+          e.clientX - (rect.left + rect.width / 2),
+          e.clientY - (rect.top + rect.height / 2)
+        );
+        if (dist < 80) {
+          moveRandom();
+        }
+      });
     }
-    moveButton();
+
+    function moveRandom() {
+      noBtn.style.top = Math.random() * 80 + "vh";
+      noBtn.style.left = Math.random() * 80 + "vw";
+
+      // Bounce animation
+      noBtn.classList.add("bounce");
+      setTimeout(() => noBtn.classList.remove("bounce"), 250);
+    }
   </script>
 </body>
 </html>
