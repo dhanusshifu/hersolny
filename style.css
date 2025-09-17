@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3d1c4f, #d16ba5, #f7b2d9);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 30px 40px;
+  text-align: center;
+  color: #fff;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn a {
+  padding: 12px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn a:first-child {
+  background: #ff4d88;
+  color: #fff;
+}
+
+.btn a:first-child:hover {
+  background: #ff6fa1;
+  transform: scale(1.05);
+}
+
+.btn a:last-child {
+  background: #fff;
+  color: #3d1c4f;
+}
+
+.btn a:last-child:hover {
+  background: #f2f2f2;
+  transform: scale(1.05);
+}
