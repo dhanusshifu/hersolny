@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yesss 💘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Hahah I knew it! 💕</h1>
+    <p id="line"></p>
+  </div>
+
+  <script>
+    const lines = [
+      "You just made my world brighter 🌸",
+      "Forever starts now 💍",
+      "My heart beats only for you 💓",
+      "You’re my favorite notification 🥰",
+      "Every love song suddenly makes sense 🎶"
+    ];
+    document.getElementById("line").innerText =
+      lines[Math.floor(Math.random() * lines.length)];
+  </script>
+</body>
+</html>
